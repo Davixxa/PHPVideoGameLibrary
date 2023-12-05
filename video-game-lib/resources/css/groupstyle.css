@@ -206,12 +206,12 @@ body{
 .login_label{
     display: inline-block;
     text-align: left;
-    margin-right: 10px;
+    margin-left: 5px;
 }
 
 .login_information{
     height: 50px;
-    width: 500px;
+    width: 300px;
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -254,7 +254,7 @@ body{
 
 .login_label_layout{
     height: inherit;
-    width: 30%;
+    width: 50%;
     align-items: center;
     text-align: center;
     display: flex;
@@ -262,7 +262,7 @@ body{
 
 .login_access_layout{
     height: inherit;
-    width: 5%;
+    width: 15%;
     align-items: center;
     text-align: center;
     display: flex;
