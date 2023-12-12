@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Localization Routing
+Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
+
 //Uncategorized
 Route::get('/game/index', [GameController::class, 'showIndex'])->name('showIndex');
 

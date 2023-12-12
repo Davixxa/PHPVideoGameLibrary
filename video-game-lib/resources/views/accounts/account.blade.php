@@ -16,11 +16,16 @@
             <input id="searchbar" type="text" name="name"><br>
         </div>
         <div class="profile_placement content_placement">
+            <select name="LANGUAGE" class="profile content_placement">
+                <option value="DANSK" href="locale/dk">DANSK</option>
+                <option value="ENGLISH" href="locale/en">ENGLISH</option>
+                <option value="DEUTSCH" href="locale/de">DEUTSCH</option>
+            </select>
             <button class="profile content_placement">
-                NEWS
+                <a @lang('public.NEWS')>NEWS</a>
             </button>
             <button class="profile content_placement">
-                PROFILE
+                <a @lang('public.PROFILE')>PROFILE</a>
             </button>
         </div>
     </div>
@@ -31,17 +36,17 @@
         <div class="widetub_bar profile_textbar content_placement">
             <div class="loginbutton_left content_placement">
                 <button class="profile_buttons">
-                    BACK
+                    <a @lang('public.BACK')>BACK</a>
                 </button>
             </div>
             <div class="loginbutton_center content_placement textstyle">
                 <p class="login_name_placement textstyle">
-                    LOGIN
+                    <a @lang('public.LOGIN')>LOGIN</a>
                 </p>
             </div>
             <div class="loginbutton_right content_placement">
                 <button class="profile_buttons">
-                    CREATE ACCOUNT
+                    <a @lang('public.CREATE ACCOUNT')>CREATE ACCOUNT</a>
                 </button>
             </div>
         </div>
@@ -53,7 +58,7 @@
         <div class="search_placement login_box content_placement textstyle">
             <div class="logintext_placement1 textstyle">
                 <p>
-                    Please enter your Login Information here.
+                    <a @lang('public.Please enter your Login Information here.')>Please enter your Login Information here.</a>
                 </p>
                 <form action="" method="post">
                     <div class="login_information">
