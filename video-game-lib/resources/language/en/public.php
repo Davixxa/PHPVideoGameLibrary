@@ -25,7 +25,10 @@ return[
             "Year"=>"Year",
             "Primary Email"=>"Primary Email",
             "LOGIN COMPLETE"=>"LOGIN COMPLETE",
-            "REGISTRATION COMPLETE"=>"REGISTRATION COMPLETE"
-]
+            "REGISTRATION COMPLETE"=>"REGISTRATION COMPLETE",
+            "DANSK"=>"DANSK",
+            "ENGLISH"=>"ENGLISH",
+            "DEUTSCH"=>"DEUTSCH"
+];
 
 ?>
