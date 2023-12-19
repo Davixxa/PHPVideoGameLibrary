@@ -1,4 +1,9 @@
 <?php>
+//Translation of Strings.
+// Here we can see, that we have got the pluralization.
+//I used the laravel website, because explained directly how we could defined the strings from one language to the other.
+//I have used Translation from English to German.
+//SOURCE-Url: https://laravel.com/docs/10.x/localization#retrieving-translation-strings
 
 return[
             "Search"=>"Suchen",
