@@ -12,18 +12,27 @@ class LocalizationMiddleware
     //The Handle-Method handles the request which are coming and going.
     public function handle(Request $request, Closure $next)
     {
-        //This if-statement tells us that if we have selected a language, then our local-language should be the current language on the page.
-        //EXAMPLE: If the local-language aka. original language is english, and we have not selected any language. Then our language should still be english.
         if(Session::get("locale")!=null){
             App::setLocale(Session::get("locale"));
+        }else{
+            switch(Session::get("locale")){
+
+                case "en":
+                Session::put("locale","en"));
+                App::setLocale(Session::get("locale"));
+                break;
+
+                case "dk":
+                Session::put("locale","dk"));
+                App::setLocale(Session::get("locale"));
+                break;
+
+                case "de":
+                Session::put("locale","de"));
+                App::setLocale(Session::get("locale"));
+                break;
+            }
         }
-        //This else-statement does the same, but the difference is that we have here defined more specifically that the "en" or english is the local language.
-        //So when english is selected, then the else statement would go the language-folder and see if any words are defined in english.
-        else{
-            Session::put("locale","en");
-            App::setLocale(Session::get("locale"));
-        }
-        //This returns the request, that has the language-been selected.
         return $next($request);
     }
 
