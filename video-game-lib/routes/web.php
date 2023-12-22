@@ -22,6 +22,9 @@ Route::get('/', function () {
 //Localization Routing
 Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
 
+//Localization Routing
+Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
+
 //Uncategorized
 Route::get('/game/index', [GameController::class, 'showIndex'])->name('showIndex');
 
