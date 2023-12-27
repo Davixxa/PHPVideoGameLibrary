@@ -42,6 +42,35 @@ return [
                     base_path('app'),
                 ],
 
+
+                'models' => [
+
+                    'Game' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'id' => ['type' => 'integer', 'format' => 'int64'],
+                            'name' => ['type' => 'string'],
+                            'description' => ['type' => 'string'],
+                            'publishing_date' => ['type' => 'string', 'format' => 'date'],
+                            'category' => ['type' => 'string'],
+                        ],
+                    ],
+
+                    'Items' => [
+                        'type' => 'array',
+                        'items' => ['$ref' => '#/components/schemas/Game'],
+                    ],
+
+                    'Error' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'error' => ['type' => 'string', 'description' => 'A brief description of the error'],
+                        ],
+                    ],
+
+                ],
+
+
             ],
         ],
     ],

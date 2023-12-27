@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: 'Your API Title'
-  description: 'Your API description'
+  title: 'GamesX API'
+  description: 'GamesX API for game information operation'
   version: 1.0.0
 paths:
   /api/games:
@@ -18,6 +18,113 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Game'
+    post:
+      tags:
+        - Games
+      summary: 'Create a new game'
+      description: 'Creates a new game'
+      operationId: createGame
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+      responses:
+        201:
+          description: 'Game created successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+  '/api/games/{id}':
+    get:
+      tags:
+        - Games
+      summary: 'Get a game by ID'
+      description: 'Returns a single game by ID'
+      operationId: getGameById
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the game'
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        404:
+          description: 'Game not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - Games
+      summary: 'Update an existing game'
+      description: 'Updates an existing game'
+      operationId: updateGame
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the game'
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+      responses:
+        200:
+          description: 'Game updated successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        404:
+          description: 'Game not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - Games
+      summary: 'Delete a game by ID'
+      description: 'Deletes a game by ID'
+      operationId: deleteGame
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'ID of the game'
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: 'Game deleted successfully'
+        404:
+          description: 'Game not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                    example: 'Game not found'
+                type: object
 components:
   schemas:
     Game:
@@ -32,5 +139,11 @@ components:
           type: string
           format: date
         category:
+          type: string
+      type: object
+    Error:
+      properties:
+        error:
+          description: 'A brief description of the error'
           type: string
       type: object

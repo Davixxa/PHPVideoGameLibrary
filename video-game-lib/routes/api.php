@@ -2,4 +2,7 @@
 
 use App\Http\Controllers\Api\GameController;
 
-Route::apiResource('games', GameController::class);
+
+Route::middleware(['throttle:api'])->group(function () {
+    Route::apiResource('games', GameController::class);
+});
