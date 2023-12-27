@@ -16,6 +16,11 @@
             <input id="searchbar" type="text" name="name"><br>
         </div>
         <div class="profile_placement content_placement">
+            <select id="languageselection" name="LANGUAGE" class="profile content_placement">
+                <option value="DANSK" href="locale/dk">DANSK</option>
+                <option value="ENGLISH" href="locale/en">ENGLISH</option>
+                <option value="DEUTSCH" href="locale/de">DEUTSCH</option>
+            </select>
             <button class="profile content_placement" id="newsButton" data-route="{{ route('showNews') }}">
                 NEWS
             </button>

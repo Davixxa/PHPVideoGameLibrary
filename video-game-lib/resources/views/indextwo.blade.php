@@ -22,10 +22,10 @@
                 <option value="DEUTSCH" href="locale/de">DEUTSCH</option>
             </select>
             <button class="profile content_placement">
-                <a @lang('public.NEWS')>NEWS</a>
+                NEWS
             </button>
             <button class="profile content_placement">
-                <a @lang('public.PROFILE')>PROFILE</a>
+                PROFILE
             </button>
         </div>
     </div>

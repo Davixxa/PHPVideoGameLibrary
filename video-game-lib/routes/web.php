@@ -19,8 +19,6 @@ Route::get('/', function () {
 });
 
 //Startpage
-//Localization Routing
-Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
 
 //Localization Routing
 Route::get("locale/{lange}",[LocalizationController::class,'setLang']);
@@ -39,3 +37,4 @@ Route::get('/game/racing', [GameController::class, 'showDrivingRacing'])->name('
 Route::get('/game/action', [GameController::class, 'showAction'])->name('showAction');
 Route::get('/game/shooting', [GameController::class, 'showShooting'])->name('showShooting');
 Route::get('/game/puzzle', [GameController::class, 'showPuzzle'])->name('showPuzzle');
+
