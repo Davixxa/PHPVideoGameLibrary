@@ -15,7 +15,7 @@ class Game extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category');
+        return $this->belongsTo(Category::class);
     }
 
     public function isAdmin()
