@@ -28,13 +28,13 @@
             </form>
 
             @if(auth()->check())
-                <p>Logged in</p>
                 <form method="post" action="/account/logout">
                     @csrf
-                    <button type="submit">Logout</button>
+                    <div class="button-container">
+                        <button type="submit">Logout</button>
+                    </div>
+                    
                 </form>
-            @else
-                <p>Logged out</p>
             @endif
 
             @if ($errors->has('login'))

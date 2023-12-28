@@ -12,9 +12,9 @@ class User extends AuthenticatableUser
 {
     use Notifiable, AuthenticatableTrait;
 
-    protected $table = 'admin';
+    protected $table = 'users';
     protected $fillable = [
-        'username', 'password',
+        'username', 'password', 'role',
     ];
 
     protected $hidden = [
@@ -24,5 +24,9 @@ class User extends AuthenticatableUser
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    public function isUser() {
+        return $this->role === 'user';
     }
 }

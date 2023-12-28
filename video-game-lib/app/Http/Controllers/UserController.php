@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function getUserRole()
+    {
+        if (auth()->check()) {
+            $user = auth()->user();
+
+            if ($user->isAdmin()) {
+                return 'admins';
+            } else {
+                return 'users';
+            }
+        }
+
+        return 'guest';
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
@@ -47,16 +62,18 @@ class UserController extends Controller
         return redirect('/account')->withErrors(['current_password' => 'Incorrect current password']);
 
     }
+
     public function showGames()
     {
         $games = Game::all();
-        return view('admin.games.index', compact('games'));
+        $role = $this->getUserRole();
+        return view($role . '.games.index', compact('games'));
     }
 
     public function showCategories()
     {
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admins.categories.index', compact('categories'));
     }
 
     public function addGame(Request $request)
@@ -76,14 +93,15 @@ class UserController extends Controller
             'category' => $request->input('category'),
         ]);
 
-        return redirect()->route('admin.showGames', compact('categories'))->with('success', 'Game added successfully');
+        return redirect()->route('admins.showGames', compact('categories'))->with('success', 'Game added successfully');
     }
 
     public function editGame($id)
     {
         $categories = Category::pluck('name', 'id');
         $game = Game::findOrFail($id);
-        return view('admin.games.edit', compact('game', 'categories'));
+        $role = $this->getUserRole();
+        return view($role . '.games.edit', compact('game', 'categories'));
     }
 
     public function updateGame(Request $request, $id)
@@ -103,8 +121,9 @@ class UserController extends Controller
             'publishing_date' => $request->input('publishing_date'),
             'category' => $request->input('category'),
         ]);
+        $role = $this->getUserRole();
 
-        return redirect()->route('admin.showGames', compact('categories'))->with('success', 'Game updated successfully');
+        return redirect()->route($role . '.showGames', compact('categories'))->with('success', 'Game updated successfully');
     }
 
     public function deleteGame($id)
@@ -112,7 +131,7 @@ class UserController extends Controller
         $game = Game::findOrFail($id);
         $game->delete();
 
-        return redirect()->route('admin.showGames')->with('success', 'Game deleted successfully');
+        return redirect()->route('admins.showGames')->with('success', 'Game deleted successfully');
     }
 
     public function addCategory(Request $request)
@@ -125,18 +144,18 @@ class UserController extends Controller
             'name' => $request->input('name'),
         ]);
 
-        return redirect()->route('admin.showCategories')->with('success', 'Category added successfully');
+        return redirect()->route('admins.showCategories')->with('success', 'Category added successfully');
     }
 
     public function showAddGameForm()
     {
         $categories = Category::pluck('name', 'id');
-        return view('admin.games.add', compact('categories'));
+        return view('admins.games.add', compact('categories'));
     }
 
     public function showAddCategoryForm()
     {
-        return view('admin.categories.add');
+        return view('admins.categories.add');
     }
 
     public function showAccount() {

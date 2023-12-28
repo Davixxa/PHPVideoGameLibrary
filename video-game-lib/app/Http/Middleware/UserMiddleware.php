@@ -5,11 +5,13 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminMiddleware
+class UserMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check() && auth()->user()->isAdmin()) {
+            return $next($request);
+        } elseif (auth()->check() && auth()->user()->isUser()) {
             return $next($request);
         }
 

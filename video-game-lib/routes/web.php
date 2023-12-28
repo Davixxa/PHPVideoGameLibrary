@@ -34,14 +34,24 @@ Route::post('/account/login', [UserController::class, 'login']);
 Route::post('/account/logout', [UserController::class, 'logout'])->middleware('auth');
 Route::post('/account/change-password', [UserController::class, 'changePassword'])->middleware('auth');
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/games', [UserController::class, 'showGames'])->name('admin.showGames');
-    Route::get('/admin/categories', [UserController::class, 'showCategories'])->name('admin.showCategories');
-    Route::get('/admin/games/add', [UserController::class, 'showAddGameForm'])->name('admin.showAddGameForm');
-    Route::post('/admin/games/add', [UserController::class, 'addGame'])->name('admin.addGame');
-    Route::get('/admin/games/edit/{id}', [UserController::class, 'editGame'])->name('admin.editGame');
-    Route::post('/admin/games/update/{id}', [UserController::class, 'updateGame'])->name('admin.updateGame');
-    Route::post('/admin/games/delete/{id}', [UserController::class, 'deleteGame'])->name('admin.deleteGame');
-    Route::get('/admin/categories/add', [UserController::class, 'showAddCategoryForm'])->name('admin.showAddCategoryForm');
-    Route::post('/admin/categories/add', [UserController::class, 'addCategory'])->name('admin.addCategory');
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/games', [UserController::class, 'showGames'])->name('admins.showGames');
+        Route::get('/categories', [UserController::class, 'showCategories'])->name('admins.showCategories');
+        Route::get('/games/add', [UserController::class, 'showAddGameForm'])->name('admins.showAddGameForm');
+        Route::post('/games/add', [UserController::class, 'addGame'])->name('admins.addGame');
+        Route::get('/games/edit/{id}', [UserController::class, 'editGame'])->name('admins.editGame');
+        Route::post('/games/update/{id}', [UserController::class, 'updateGame'])->name('admins.updateGame');
+        Route::post('/games/delete/{id}', [UserController::class, 'deleteGame'])->name('admins.deleteGame');
+        Route::get('/categories/add', [UserController::class, 'showAddCategoryForm'])->name('admins.showAddCategoryForm');
+        Route::post('/categories/add', [UserController::class, 'addCategory'])->name('admins.addCategory');
+    });
+});
+
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/games', [UserController::class, 'showGames'])->name('users.showGames');
+        Route::get('/games/edit/{id}', [UserController::class, 'editGame'])->name('users.editGame');
+        Route::post('/games/update/{id}', [UserController::class, 'updateGame'])->name('users.updateGame');
+    });
 });

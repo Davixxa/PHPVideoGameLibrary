@@ -4,7 +4,7 @@
 <hr class="text-white mx-3 my-4">
 <div class="container text-center text-white">
     <h1 class="text-white display-3">Add New Game</h1>
-    <form action="{{ route('admin.addGame') }}" method="post">
+    <form action="{{ route('admins.addGame') }}" method="post">
         @csrf
         <div class="mt-2 mb-2">
             <label for="name">Name:</label>

@@ -6,7 +6,7 @@
     <h1 class="text-white display-3">Edit Game</h1>
     <h2 class="text-white">{{ $game->name }}</h2>
 
-    <form action="{{ route('admin.updateGame', $game->id) }}" method="post">
+    <form action="{{ route('users.updateGame', $game->id) }}" method="post">
         @csrf
         <div class="mt-2 mb-2">
             <label for="name" class="text-white">Name:</label>

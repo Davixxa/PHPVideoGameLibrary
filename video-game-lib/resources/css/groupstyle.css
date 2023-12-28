@@ -367,3 +367,9 @@ body{
     justify-content: space-evenly;
     place-content: right;
 }
+
+.button-container {
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
