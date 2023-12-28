@@ -1,0 +1,68 @@
+/* Carousel container*/
+.carousel-container {
+    position: relative;
+    width: 450px;
+    height: 400px;
+    margin: auto;
+}
+
+/* Carousel images */
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* Navigation buttons */
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    display: block;
+    font-size: 24px;
+    color: white;
+    text-shadow: 0 0 2px black;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 15; /* Ensure it's above other elements */
+}
+
+.carousel-indicators li {
+    background-color: #333;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel-indicators li.active {
+    background-color: #fff;
+}
