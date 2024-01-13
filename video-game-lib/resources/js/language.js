@@ -11,3 +11,5 @@ languageselection.addEventListener("selectionchange",function (){
 });
 
 // SRC: https://stackoverflow.com/questions/1225337/javascript-to-reload-the-page-as-get-request
+//WHAT HAVE I LEARNED:
+//I learned, that by using the placement or local variable, we are able to create a pattern of elements that can define a path of a file.
